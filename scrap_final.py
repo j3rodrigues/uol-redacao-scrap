@@ -59,6 +59,7 @@ for i in link:
         
         numCompetencia = 0
         for aFinal in span_pontos:
+            numCompetencia += 1
             if (numCompetencia == 6):
                 arquivo.write('Nota final - ' + aFinal.text)
             else:
