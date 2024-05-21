@@ -1,0 +1,10 @@
+Nota geral: “Dado os textos das competências entregados anteriormente, dê uma nota geral de quanto esta redação vale, de 0 a 1000. 
+Competência 1: Demonstrar domínio da modalidade escrita formal da língua portuguesa
+Competência 2: Compreender a proposta de redação e aplicar conceitos das várias áreas de conhecimento para desenvolver o tema, dentro dos limites estruturais do texto dissertativo-argumentativo em prosa.
+Competência 3: Selecionar, relacionar, organizar e interpretar informações, fatos, opiniões e argumentos em defesa de um ponto de vista.
+Competência 4: Demonstrar conhecimento dos mecanismos linguísticos necessários para a construção da argumentação.
+Competência 5: Elaborar proposta de intervenção para o problema abordado, respeitando os direitos humanos.
+
+Cada competência vale 200, em que a soma de cada uma delas deve totalizar 1000 pontos.”
+
+De acordo com esse texto, corrija essa redação e pontue. Não reecreva a redação corrigida novamente, apenas dê a nota e explique o porquê.
