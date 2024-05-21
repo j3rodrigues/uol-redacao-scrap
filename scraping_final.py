@@ -15,6 +15,7 @@ link = [l.find('a').get('href') for l in div_link]
 
 numRedacao = 0
 tema = "Carnaval"
+temaCompleto = "Carnaval e apropriação cultural"
 
 for i in link:
     link_url = f'{i}'
@@ -24,7 +25,7 @@ for i in link:
     
     article = soup1.find('article', class_ = 'rt-body')
 
-    divA = article.find_all('div', class_="rt-line-option")
+    span_pontos = article.find_all('span', class_="points")
 
     divH2 = soup1.find('div', class_="container-composition")
     h2 = divH2.find_all('h2') #titulos das redações
@@ -39,23 +40,49 @@ for i in link:
 
     numRedacao += 1
     #print(numRedacao)
+    numArquivos = [1, 2, 3, 4, 5, 6]
+    prompt = ""
+    caminho_incompleto = "C:/Users/paixa/.vscode/desenvolvimento/textosCompetencias/"
+    #salvar o texto de cada competeência numa pasta e colocar o caminho aqui. cada competência deve estar num arquivo diferente.
+    
     with open(f"Tema {tema} ({numRedacao})" + '.txt', "a", encoding="utf-8") as arquivo:
-        for h in h2:
-            arquivo.write(h.text + '\n\n')
-       
-        for x in paragrafos:
-            s=""
-            all_spans = x.find_all('span')
+        for num in numArquivos:
             
-            for span in all_spans:
-                #print(span)
-                if span['style']=='color:#00b050' or span['style']=='color:#00b050':
+            with open(caminho_incompleto + f"Competencia {num}" + '.txt', "r", encoding="utf-8") as arquivoCompetencia:
+                prompt = arquivoCompetencia.read()
+            
+            with open(caminho_incompleto + 'Fuga do tema.txt', "r", encoding="utf-8") as arquivoFuga:
+                textoFuga = arquivoFuga.read()
+                
+            arquivo.write(prompt)
+            arquivo.write(f'\n Tema: "{temaCompleto}". \n')
+            arquivo.write(textoFuga)
+            arquivo.write('\n\n') 
+            arquivo.write(f'Redação {numRedacao}: ')
+            for h in h2:
+                arquivo.write('"' + h.text + '"\n\n')
+        
+            for x in paragrafos:
+                s=""
+                all_spans = x.find_all('span')
+                
+                for span in all_spans:
                     #print(span)
-                    span.decompose()
-            arquivo.write(x.text)
-            arquivo.write('\n\n')
+                    if span['style']=='color:#00b050':
+                        #print(span)
+                        span.decompose()
+                arquivo.write(x.text)
+                arquivo.write('\n\n')
+            arquivo.write('\n\n\n\n\n')
+                
         arquivo.write('COMPETÊNCIAS')
         arquivo.write('\n\n')
-        for aFinal in divA:
-            arquivo.write(aFinal.text)
-            arquivo.write('\n\n')
+            
+        numCompetencia = 0
+        for aFinal in span_pontos:
+            numCompetencia += 1
+            if (numCompetencia == 6):
+                arquivo.write('Nota final - ' + aFinal.text)
+            else:
+                arquivo.write(f'Competência {numCompetencia} - ' + aFinal.text)
+                arquivo.write('\n\n')
